@@ -2,29 +2,29 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Chao-Chun Hsu</title>
-    <link>https://joe32140.github.io/</link>
+    <link>https://chaochunhsu.github.io/</link>
     <description>Recent content in Home on Chao-Chun Hsu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://joe32140.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://chaochunhsu.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cupper</title>
-      <link>https://joe32140.github.io/print-version/</link>
+      <link>https://chaochunhsu.github.io/print-version/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://joe32140.github.io/print-version/</guid>
+      <guid>https://chaochunhsu.github.io/print-version/</guid>
       <description>You don&amp;rsquo;t want to edit this file :-)</description>
     </item>
     
     <item>
       <title>Publication</title>
-      <link>https://joe32140.github.io/patterns/pattern/</link>
+      <link>https://chaochunhsu.github.io/patterns/pattern/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://joe32140.github.io/patterns/pattern/</guid>
+      <guid>https://chaochunhsu.github.io/patterns/pattern/</guid>
       <description>Conferences &amp;amp; Workshops 2020  Knowledge-Enriched Visual Storytelling, Chao-Chun Hsu*, Zi-Yuan Chen*, Chi-Yang Hsu, Chih-Chia Li, Tzu-Yuan Lin, Ting-Hao (Kenneth) Huang, Lun-Wei Ku (* equal contribution), To appear in The AAAI Conference on Artificial Intelligence (AAAI&amp;rsquo;20)
   2019  Dixit: Interactive Visual Storytelling via Term Manipulation, Chao-Chun Hsu*, Yu-Hua Chen*, Zi-Yuan Chen*, Hsin-Yu Lin, Ting-Hao (Kenneth) Huang, Lun-Wei Ku (* equal contribution), In proceedings of The Web Conference 2019 Demonstration track (WWW&amp;rsquo;19 Demo)</description>
     </item>
