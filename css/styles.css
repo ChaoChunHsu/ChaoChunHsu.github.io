@@ -247,13 +247,13 @@ label {
 
 table {
     text-align: left;
-    table-layout: fixed;
+    table-layout: auto;
     width: 100%;
     border-collapse: collapse;
 }
 th,
 td {
-    border: 2px solid;
+    border: 0.5px solid;
     padding: 0.5rem;
     line-height: 1.25;
     margin: 0;
