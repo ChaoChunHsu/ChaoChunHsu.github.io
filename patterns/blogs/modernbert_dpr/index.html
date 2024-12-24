@@ -139,7 +139,7 @@
           <div>
             <div class="intro">
               <a class="logo" href="https://chaochunhsu.github.io/" aria-label="Chao-Chun (Joe) Hsu home page">
-                <img src="https://chaochunhsu.github.io/images/joe_profile.jpg" alt="">
+                <img src="https://chaochunhsu.github.io/images/didi.jpg" alt="">
               </a>
               <p class="library-desc">
                 Chao-Chun (Joe) Hsu
@@ -248,10 +248,10 @@
     <blockquote>
 <p>Cross-posted here: <a href="https://api.wandb.ai/links/joe32140/zqs87nz3">https://api.wandb.ai/links/joe32140/zqs87nz3</a></p>
 </blockquote>
-<h1 id="before-we-started">Before We Started</h1>
-<p>As researchers from Lightn.io and answer.ai released the ModernBERT models (<a href="https://huggingface.co/papers/2412.13663)">https://huggingface.co/papers/2412.13663)</a>, which are BERT models for 2024, I am interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they have not released the model checkpoints for all experiments. I decided to finetune ModernBERT on the MSMACRO dataset by myself based on the provided training scripts.</p>
+<h1 id="before-we-start">Before We Start</h1>
+<p>As researchers from LightOn.AI and Answer.AI released the ModernBERT models (<a href="https://huggingface.co/papers/2412.13663">https://huggingface.co/papers/2412.13663</a> ), which are BERT models for 2024, I am interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they have not released the model checkpoints for all experiments. I decided to finetune ModernBERT on the MSMACRO dataset by myself based on the provided training scripts.</p>
 <h1 id="experiments">Experiments</h1>
-<p>I ran experiments with <a href="https://github.com/AnswerDotAI/ModernBERT/tree/main/examples">the official training scripts</a>, modifying the mini_batch_size for CachedMultipleNegativesRankingLoss to accelerate the training. Following the hyperparameter suggestions, I chose a learning rate of 8e-5 for the base model and 1e-4 for the large model. The per_device_batch_size was set to 512, which is different from the batch size of 16 mentioned in the paper. By training both model sizes on an RTX4090 24GB GPU, it took 1 hour for the base model and 2 hours for the large model for one epoch. More training logs are shown in the panels below.</p>
+<p>I ran experiments with <a href="https://github.com/AnswerDotAI/ModernBERT/tree/main/examples">the official training scripts</a>, modifying the <code>mini_batch_size</code> for <code>CachedMultipleNegativesRankingLoss</code> to accelerate the training. Following the hyperparameter suggestions, I chose a learning rate of 8e-5 for the base model and 1e-4 for the large model. The <code>per_device_batch_size</code> was set to 512, which is different from the batch size of 16 mentioned in the paper. By training both model sizes on an RTX4090 24GB GPU, it took 1 hour for the base model and 2 hours for the large model for one epoch. More training logs are shown in the panels below.</p>
 <p>In the end, I finetuned ModernBERT-base and ModernBERT-large on 1.25M partial training instances on <a href="https://huggingface.co/datasets/sentence-transformers/msmarco-co-condenser-margin-mse-sym-mnrl-mean-v1">the MSMACRO dataset</a> following the paper&rsquo;s experiment setup. I put the fine-tuned checkpoint on Hugging Face Hub:</p>
 <p><a href="https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0">https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0</a></p>
 <h1 id="reproduced-results">Reproduced Results</h1>
