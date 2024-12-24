@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Llm on Chao-Chun (Joe) Hsu</title>
+    <link>https://chaochunhsu.github.io/tags/llm/</link>
+    <description>Recent content in Llm on Chao-Chun (Joe) Hsu</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="https://chaochunhsu.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reproducibility Report of ModernBERT Models for Retrieval Tasks Using DPR</title>
+      <link>https://chaochunhsu.github.io/patterns/blogs/modernbert_dpr/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://chaochunhsu.github.io/patterns/blogs/modernbert_dpr/</guid>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Cross-posted here: &lt;a href=&#34;https://api.wandb.ai/links/joe32140/zqs87nz3&#34;&gt;https://api.wandb.ai/links/joe32140/zqs87nz3&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h1 id=&#34;before-we-started&#34;&gt;Before We Started&lt;/h1&gt;&#xA;&lt;p&gt;As researchers from Lightn.io and answer.ai released the ModernBERT models (&lt;a href=&#34;https://huggingface.co/papers/2412.13663)&#34;&gt;https://huggingface.co/papers/2412.13663)&lt;/a&gt;, which are BERT models for 2024, I am interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they have not released the model checkpoints for all experiments. I decided to finetune ModernBERT on the MSMACRO dataset by myself based on the provided training scripts.&lt;/p&gt;&#xA;&lt;h1 id=&#34;experiments&#34;&gt;Experiments&lt;/h1&gt;&#xA;&lt;p&gt;I ran experiments with &lt;a href=&#34;https://github.com/AnswerDotAI/ModernBERT/tree/main/examples&#34;&gt;the official training scripts&lt;/a&gt;, modifying the mini_batch_size for CachedMultipleNegativesRankingLoss to accelerate the training. Following the hyperparameter suggestions, I chose a learning rate of 8e-5 for the base model and 1e-4 for the large model. The per_device_batch_size was set to 512, which is different from the batch size of 16 mentioned in the paper. By training both model sizes on an RTX4090 24GB GPU, it took 1 hour for the base model and 2 hours for the large model for one epoch. More training logs are shown in the panels below.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-    <link rel="stylesheet" type="text/css" href="https://chaochunhsu.github.io/css/styles.css?v=Lastest%20update%3a%202%2f6%2f2023">
+    <link rel="stylesheet" type="text/css" href="https://chaochunhsu.github.io/css/styles.css?v=Lastest%20update%3a%2012%2f24%2f2024">
     <style id="inverter" media="none">
       html { filter: invert(100%) }
       * { background-color: inherit }
@@ -182,6 +182,15 @@
         <ul id="patterns-list">
           
             <li class="pattern">
+              <a href="#blog" >
+                <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                  <use xlink:href="#bookmark"></use>
+                </svg>
+                <span class="text">Blog</span>
+              </a>
+            </li>
+          
+            <li class="pattern">
               <a href="#publication" >
                 <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
                   <use xlink:href="#bookmark"></use>
@@ -191,11 +200,38 @@
             </li>
           
           
+            <li>
+              <h3>Blog</h3>
+              <ul>
+                
+                  <li class="pattern">
+                    <a href="#reproducibility-report-of-modernbert-models-for-retrieval-tasks-using-dpr" >
+                      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                        <use xlink:href="#bookmark"></use>
+                      </svg>
+                      <span class="text">Reproducibility Report of ModernBERT Models for Retrieval Tasks Using DPR</span>
+                    </a>
+                  </li>
+                
+              </ul>
+            </li>
+          
         </ul>
       
     </nav>
     
     
+      
+        <div class="pattern-section">
+          <h1 id="blog" tabindex="-1">
+            <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+              <use xlink:href="#bookmark"></use>
+            </svg>
+            Blog
+          </h1>
+          <p>Hello!</p>
+
+        </div>
       
         <div class="pattern-section">
           <h1 id="publication" tabindex="-1">
@@ -238,6 +274,100 @@
         </div>
       
       
+        
+          <div class="pattern-section">
+            <h1 id="reproducibility-report-of-modernbert-models-for-retrieval-tasks-using-dpr" tabindex="-1">
+              <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                <use xlink:href="#bookmark"></use>
+              </svg>
+              Reproducibility Report of ModernBERT Models for Retrieval Tasks Using DPR
+            </h1>
+            <blockquote>
+<p>Cross-posted here: <a href="https://api.wandb.ai/links/joe32140/zqs87nz3">https://api.wandb.ai/links/joe32140/zqs87nz3</a></p>
+</blockquote>
+<h1 id="before-we-started">Before We Started</h1>
+<p>As researchers from Lightn.io and answer.ai released the ModernBERT models (<a href="https://huggingface.co/papers/2412.13663)">https://huggingface.co/papers/2412.13663)</a>, which are BERT models for 2024, I am interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they have not released the model checkpoints for all experiments. I decided to finetune ModernBERT on the MSMACRO dataset by myself based on the provided training scripts.</p>
+<h1 id="experiments">Experiments</h1>
+<p>I ran experiments with <a href="https://github.com/AnswerDotAI/ModernBERT/tree/main/examples">the official training scripts</a>, modifying the mini_batch_size for CachedMultipleNegativesRankingLoss to accelerate the training. Following the hyperparameter suggestions, I chose a learning rate of 8e-5 for the base model and 1e-4 for the large model. The per_device_batch_size was set to 512, which is different from the batch size of 16 mentioned in the paper. By training both model sizes on an RTX4090 24GB GPU, it took 1 hour for the base model and 2 hours for the large model for one epoch. More training logs are shown in the panels below.</p>
+<p>In the end, I finetuned ModernBERT-base and ModernBERT-large on 1.25M partial training instances on <a href="https://huggingface.co/datasets/sentence-transformers/msmarco-co-condenser-margin-mse-sym-mnrl-mean-v1">the MSMACRO dataset</a> following the paper&rsquo;s experiment setup. I put the fine-tuned checkpoint on Hugging Face Hub:</p>
+<p><a href="https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0">https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0</a></p>
+<h1 id="reproduced-results">Reproduced Results</h1>
+<p>As shown in the table below, my fine-tuned models outperform the original models reported in the paper on NDCG@10. My fine-tuned models even improve the ArguAna dataset by more than 10% for the base model and 9% for the large model. I hypothesize that the performance gains come from the much larger batch size of 512 in the official training script compared to the reported batch size of 16 in the paper, but this needs to be verified by the authors.</p>
+<p>For the out-of-domain (OOD) evaluation on the MLDR dataset, our models still show significant improvement over the original numbers.</p>
+<p>It&rsquo;s worth noting that if you finetune the model on the whole MSMACRO dataset with the same suggested learning rate, the model performance degrades significantly, which could be due to overfitting the training dataset.</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: center"></th>
+          <th style="text-align: center">NFCorpus</th>
+          <th style="text-align: center">SciFact</th>
+          <th style="text-align: center">TREC-Covid</th>
+          <th style="text-align: center">FiQA</th>
+          <th style="text-align: center">ArguAna</th>
+          <th style="text-align: center">SciDocs</th>
+          <th>FEVER</th>
+          <th>Climate-FEVER</th>
+          <th style="text-align: center">MLDR - OOD</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">ModernBERT-base</td>
+          <td style="text-align: center">23.7</td>
+          <td style="text-align: center">57.0</td>
+          <td style="text-align: center">72.1</td>
+          <td style="text-align: center">28.8</td>
+          <td style="text-align: center">35.7</td>
+          <td style="text-align: center">12.5</td>
+          <td>59.9</td>
+          <td>23.6</td>
+          <td style="text-align: center">27.4</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ModernBERT-base (ours)</td>
+          <td style="text-align: center">26.6</td>
+          <td style="text-align: center">61.6</td>
+          <td style="text-align: center">71.4</td>
+          <td style="text-align: center">30.7</td>
+          <td style="text-align: center">46.3</td>
+          <td style="text-align: center">13.6</td>
+          <td>65.7</td>
+          <td>22.6</td>
+          <td style="text-align: center">30.5</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ModernBERT-large</td>
+          <td style="text-align: center">26.2</td>
+          <td style="text-align: center">60.4</td>
+          <td style="text-align: center">74.1</td>
+          <td style="text-align: center">33.1</td>
+          <td style="text-align: center">38.2</td>
+          <td style="text-align: center">13.8</td>
+          <td>62.7</td>
+          <td>20.5</td>
+          <td style="text-align: center">34.3</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ModernBERT-large (ours)</td>
+          <td style="text-align: center">28.4</td>
+          <td style="text-align: center">63.6</td>
+          <td style="text-align: center">77.4</td>
+          <td style="text-align: center">34.3</td>
+          <td style="text-align: center">47.7</td>
+          <td style="text-align: center">15.7</td>
+          <td>68.2</td>
+          <td>22.9</td>
+          <td style="text-align: center">38.9</td>
+      </tr>
+  </tbody>
+</table>
+<h1 id="bottom-line">Bottom Line</h1>
+<p>Overall, my attempt to reproduce experiment results on the newly proposed ModernBERT for retrieval tasks was more than successful, with my fine-tuned models outperforming the numbers reported in the original paper by a large margin. This gap may come from the batch size discrepancy between the provided training script and that in the paper, i.e., 512 in the script vs. 16 in the paper.</p>
+<p>Please try the fine-tuned retrieval models yourself at my <a href="https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0">Huggingface model hub</a>!</p>
+
+          </div>
+        
+      
     
   </main>
 
@@ -248,7 +378,7 @@
                 <span aria-hidden="true"></span>
               </label>
             </div>
-            Powered by <a href="https://github.com/ThePacielloGroup/cupper"><strong>Cupper</strong></a> | Lastest update: 2/6/2023<br>
+            Powered by <a href="https://github.com/ThePacielloGroup/cupper"><strong>Cupper</strong></a> | Lastest update: 12/24/2024<br>
           </footer>
         </div>
       </div>
