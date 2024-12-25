@@ -255,9 +255,10 @@
 <p>In the end, I finetuned ModernBERT-base and ModernBERT-large on 1.25M partial training instances on <a href="https://huggingface.co/datasets/sentence-transformers/msmarco-co-condenser-margin-mse-sym-mnrl-mean-v1">the MSMACRO dataset</a> following the paper&rsquo;s experiment setup. I put the fine-tuned checkpoint on Hugging Face Hub:</p>
 <p><a href="https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0">https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0</a></p>
 <h1 id="reproduced-results">Reproduced Results</h1>
-<p>As shown in the table below, my fine-tuned models outperform the original models reported in the paper on NDCG@10. My fine-tuned models even improve the ArguAna dataset by more than 10% for the base model and 9% for the large model. I hypothesize that the performance gains come from the much larger batch size of 512 in the official training script compared to the reported batch size of 16 in the paper, but this needs to be verified by the authors.</p>
-<p>For the out-of-domain (OOD) evaluation on the MLDR dataset, our models still show significant improvement over the original numbers.</p>
-<p>It&rsquo;s worth noting that if you finetune the model on the whole MSMACRO dataset with the same suggested learning rate, the model performance degrades significantly, which could be due to overfitting the training dataset.</p>
+<p>As shown in the table below, my fine-tuned models outperform the original models reported in the paper on NDCG@10. They also improve performance on the ArguAna dataset by more than 10% for the base model and 9% for the large model. I hypothesize that these gains come from the much larger batch size of 512 in the official training script, compared to the reported batch size of 16 in the paper, but this still needs verification by the authors.</p>
+<p>For the out-of-domain (OOD) evaluation on the MLDR dataset, our models show significant improvement over the original numbers.</p>
+<p>It&rsquo;s worth noting that if you fine-tune the model on the entire MSMACRO dataset with the same suggested learning rate, the performance degrades noticeably, which could be due to overfitting.</p>
+<p>Since my fine-tuned version consistently outperforms the results reported in the paper, I also tested the <code>gte-en-mlm-base</code> model. It still shows substantial improvements, suggesting that the difference in batch size may be a key factor behind these gains.</p>
 <table>
   <thead>
       <tr>
@@ -269,11 +270,25 @@
           <th style="text-align: center">ArguAna</th>
           <th style="text-align: center">SciDocs</th>
           <th>FEVER</th>
+          <th>HotpotQA</th>
           <th>Climate-FEVER</th>
           <th style="text-align: center">MLDR - OOD</th>
       </tr>
   </thead>
   <tbody>
+      <tr>
+          <td style="text-align: center">gte-en-mlm-base</td>
+          <td style="text-align: center">26.3</td>
+          <td style="text-align: center">54.1</td>
+          <td style="text-align: center">49.7</td>
+          <td style="text-align: center">30.1</td>
+          <td style="text-align: center">35.7</td>
+          <td style="text-align: center">14.1</td>
+          <td>65.0</td>
+          <td>49.9</td>
+          <td>22.9</td>
+          <td style="text-align: center">34.3</td>
+      </tr>
       <tr>
           <td style="text-align: center">ModernBERT-base</td>
           <td style="text-align: center">23.7</td>
@@ -283,20 +298,9 @@
           <td style="text-align: center">35.7</td>
           <td style="text-align: center">12.5</td>
           <td>59.9</td>
+          <td>46.1</td>
           <td>23.6</td>
           <td style="text-align: center">27.4</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">ModernBERT-base (ours)</td>
-          <td style="text-align: center">26.6</td>
-          <td style="text-align: center">61.6</td>
-          <td style="text-align: center">71.4</td>
-          <td style="text-align: center">30.7</td>
-          <td style="text-align: center">46.3</td>
-          <td style="text-align: center">13.6</td>
-          <td>65.7</td>
-          <td>22.6</td>
-          <td style="text-align: center">30.5</td>
       </tr>
       <tr>
           <td style="text-align: center">ModernBERT-large</td>
@@ -307,8 +311,35 @@
           <td style="text-align: center">38.2</td>
           <td style="text-align: center">13.8</td>
           <td>62.7</td>
+          <td>49.2</td>
           <td>20.5</td>
           <td style="text-align: center">34.3</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">gte-en-mlm-base (ours)</td>
+          <td style="text-align: center">29.7</td>
+          <td style="text-align: center">60.2</td>
+          <td style="text-align: center">57.2</td>
+          <td style="text-align: center">31.9</td>
+          <td style="text-align: center">48.7</td>
+          <td style="text-align: center">15.2</td>
+          <td>67.7</td>
+          <td>50.8</td>
+          <td>24.9</td>
+          <td style="text-align: center">35.0</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">ModernBERT-base (ours)</td>
+          <td style="text-align: center">26.6</td>
+          <td style="text-align: center">61.6</td>
+          <td style="text-align: center">71.4</td>
+          <td style="text-align: center">30.7</td>
+          <td style="text-align: center">46.3</td>
+          <td style="text-align: center">13.6</td>
+          <td>65.7</td>
+          <td>47.8</td>
+          <td>22.6</td>
+          <td style="text-align: center">30.5</td>
       </tr>
       <tr>
           <td style="text-align: center">ModernBERT-large (ours)</td>
@@ -319,14 +350,15 @@
           <td style="text-align: center">47.7</td>
           <td style="text-align: center">15.7</td>
           <td>68.2</td>
+          <td>51.8</td>
           <td>22.9</td>
           <td style="text-align: center">38.9</td>
       </tr>
   </tbody>
 </table>
 <h1 id="bottom-line">Bottom Line</h1>
-<p>Overall, my attempt to reproduce experiment results on the newly proposed ModernBERT for retrieval tasks was more than successful, with my fine-tuned models outperforming the numbers reported in the original paper by a large margin. This gap may come from the batch size discrepancy between the provided training script and that in the paper, i.e., 512 in the script vs. 16 in the paper.</p>
-<p>Please try the fine-tuned retrieval models yourself at my <a href="https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0">Huggingface model hub</a>!</p>
+<p>Overall, my attempt to reproduce experiment results on the newly proposed ModernBERT for retrieval tasks was successful, with my fine-tuned models outperforming the numbers reported in the original paper by a large margin. This gap may come from the batch size discrepancy between the provided training script and that in the paper, i.e., 512 in the script vs. 16 in the paper. Even if the numbers between ModernBERT and gte-en-mlm are close/mixed for retrieval tasks using DPR, the training time and inference time are much faster for ModernBERT. Thus, I would still recommend using ModerBERT in most cases.</p>
+<p>Please try the fine-tuned retrieval models by yourself at my <a href="https://huggingface.co/collections/joe32140/modernbert-for-retrieval-6764ff19edb01fb6c69538f0">Hugging face model hub</a>!</p>
 
   </main>
 
