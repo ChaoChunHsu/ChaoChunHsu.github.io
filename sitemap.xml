@@ -3,25 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://chaochunhsu.github.io/tags/2024/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/patterns/blogs/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/categories/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/print-version/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/llm/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/patterns/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/patterns/pattern/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/patterns/blogs/modernbert_dpr/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/retrieval/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
