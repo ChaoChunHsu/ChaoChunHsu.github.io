@@ -336,7 +336,7 @@
 <p>After these iterations, the final architecture emerged:</p>
 <p><img src="https://chaochunhsu.github.io/images/tei_qdrant_lb.png" alt="Global Megacorp Ltd"></p>
 <p><em>(Simplified flow diagram)</em></p>
-<p>To make interaction easier, I added a simple <strong>Gradio application</strong> (<code>gradio_code_search/</code>) that uses this backend. It can clone a GitHub repo or scan a local directory, chunk code files, call the embedding endpoint (hitting the cache proxy), store the results in its <em>own</em> local Qdrant instance (separate from the main cache), and allow semantic search over the indexed code chunks. Building this demo also surfaced minor issues like correct Git clone URL handling and Gradio progress bar quirks.</p>
+<p>To make interaction easier, I added a simple <a href="https://github.com/joe32140/tei-qdrant-cache/tree/main/gradio_code_search"><strong>Gradio application</strong></a> that uses this backend. It can clone a GitHub repo or scan a local directory, chunk code files, call the embedding endpoint (hitting the cache proxy), store the results in its <em>own</em> local Qdrant instance (separate from the main cache), and allow semantic search over the indexed code chunks. Building this demo also surfaced minor issues like correct Git clone URL handling and Gradio progress bar quirks.</p>
 <p><img src="https://chaochunhsu.github.io/images/ui.png" alt="Global Megacorp Ltd"></p>
 <h3 id="bottom-line--takeaways">Bottom Line &amp; Takeaways</h3>
 <p>Building this <code>tei-qdrant-cache</code> system was a valuable journey through the practicalities of deploying and optimizing embedding models. Key takeaways include:</p>
