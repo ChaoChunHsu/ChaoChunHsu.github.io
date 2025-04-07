@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <link rel="canonical" href="https://chaochunhsu.github.io/categories/">
+    <link rel="canonical" href="https://chaochunhsu.github.io/patterns/blogs/tei_qdrant_cache/">
     <link rel="apple-touch-icon" sizes="57x57" href="https://chaochunhsu.github.io/images/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="https://chaochunhsu.github.io/images/apple-touch-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="https://chaochunhsu.github.io/images/apple-touch-icon-72x72.png">
@@ -43,7 +43,7 @@
       
     <title>
       
-        Categories | Chao-Chun (Joe) Hsu
+        My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant | Chao-Chun (Joe) Hsu
       
     </title>
     
@@ -220,11 +220,135 @@
           
   <main id="main">
     <h1>
-      Categories
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant
     </h1>
-    <ul class="patterns-list">
+    
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/retrieval">retrieval</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/llm">llm</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/embeddings">embeddings</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/inference">inference</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/caching">caching</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/qdrant">qdrant</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/fastapi">fastapi</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/multi-gpu">multi-gpu</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/llm-infra">llm-infra</a>
+            </li>
+          
+            <li>
+              <svg class="tag-icon" aria-hidden="true" viewBox="0 0 177.16535 177.16535" focusable="false">
+                <use xlink:href="#tag"></use>
+              </svg>
+              <a href="https://chaochunhsu.github.io/tags/2025">2025</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+    
       
-    </ul>
+
+
+    
+    <h2 id="my-journey-building-a-scalable-cached-embedding-server-with-tei-and-qdrant">My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant</h2>
+<blockquote>
+<p>Github repo: <a href="https://github.com/joe32140/tei-qdrant-cache">https://github.com/joe32140/tei-qdrant-cache</a></p></blockquote>
+<h3 id="before-we-start">Before We Start</h3>
+<p>Serving machine learning models efficiently, especially powerful embedding models, often requires more than just loading a checkpoint. As models grow and use cases demand high throughput or handle repetitive queries, challenges around scaling, latency, and resource utilization emerge. My goal was to create a robust system for serving text embeddings using Hugging Face&rsquo;s <code>text-embeddings-inference</code> (TEI) server, specifically targeting multi-GPU setups and incorporating a mechanism to handle repeated requests efficiently – essentially, building a smart caching layer.</p>
+<p>This post details the iterative process, the roadblocks encountered, and the final architecture using TEI, FastAPI, Qdrant, Nginx, and Docker Compose.</p>
+<h3 id="the-initial-plan-scaling-tei">The Initial Plan: Scaling TEI</h3>
+<p>The starting point was TEI, a high-performance server for embeddings. The immediate need was scaling across multiple GPUs (an 2-GPU machine in my case). TEI&rsquo;s issue discussion suggested a pattern: run independent TEI instances, each pinned to a specific GPU, and place a load balancer like Nginx in front <a href="https://github.com/huggingface/text-embeddings-inference/issues/87#issuecomment-1822970062">link</a>.</p>
+<p>To manage this, I opted for Docker Compose and wrote a Python script (<code>generate_configs.py</code>) to dynamically create the <code>docker-compose.yml</code> and <code>nginx.conf</code> based on a simple <code>.env</code> file specifying the number of GPU replicas (<code>NUM_REPLICAS</code>). This made scaling up or down much easier than manually duplicating service definitions.</p>
+<p><img src="https://chaochunhsu.github.io/images/tei_lb.png" alt="Global Megacorp Ltd"></p>
+<p><em>(Initial simplified view: Load Balancer distributing to TEI instances)</em></p>
+<h3 id="the-caching-idea-handling-redundancy">The Caching Idea: Handling Redundancy</h3>
+<p>With the basic multi-GPU serving working, the next goal was efficiency. Many applications send the same text for embedding multiple times. Re-computing these is wasteful. A caching layer was needed.</p>
+<p>I considered options like Nginx+Lua but opted for a dedicated <strong>FastAPI proxy service</strong> placed <em>in front</em> of the Nginx load balancer. This offered better separation of concerns and more flexibility in implementing the caching logic. For the cache store itself, instead of a simple key-value store like Redis, I decided to experiment with <strong>Qdrant</strong>, a vector database. While slightly overkill for simple key-value lookups, it offered persistence and the potential for future vector-based operations on the cache itself.</p>
+<p>The plan was:</p>
+<ul>
+<li>Client sends request to FastAPI proxy.</li>
+<li>Proxy hashes the input text to create a key.</li>
+<li>Proxy checks Qdrant for this key.</li>
+<li><strong>Hit:</strong> Return cached embedding.</li>
+<li><strong>Miss:</strong> Forward <em>only the missed text(s)</em> to Nginx -&gt; TEI, get the embedding, store it in Qdrant, then return to the client.</li>
+</ul>
+<h3 id="the-final-stack--a-gradio-demo">The Final Stack &amp; A Gradio Demo</h3>
+<p>After these iterations, the final architecture emerged:</p>
+<p><img src="https://chaochunhsu.github.io/images/tei_qdrant_lb.png" alt="Global Megacorp Ltd"></p>
+<p><em>(Simplified flow diagram)</em></p>
+<p>To make interaction easier, I added a simple <strong>Gradio application</strong> (<code>gradio_code_search/</code>) that uses this backend. It can clone a GitHub repo or scan a local directory, chunk code files, call the embedding endpoint (hitting the cache proxy), store the results in its <em>own</em> local Qdrant instance (separate from the main cache), and allow semantic search over the indexed code chunks. Building this demo also surfaced minor issues like correct Git clone URL handling and Gradio progress bar quirks.</p>
+<p><img src="https://chaochunhsu.github.io/images/ui.png" alt="Global Megacorp Ltd"></p>
+<h3 id="bottom-line--takeaways">Bottom Line &amp; Takeaways</h3>
+<p>Building this <code>tei-qdrant-cache</code> system was a valuable journey through the practicalities of deploying and optimizing embedding models. Key takeaways include:</p>
+<ul>
+<li><strong>Infrastructure First:</strong> Correct Docker, GPU driver, and NVIDIA Container Toolkit setup is paramount.</li>
+<li><strong>Know Your Tools:</strong> Understand the requirements and limitations of components like TEI (model compatibility, token limits) and libraries like <code>qdrant-client</code> (sync vs. async, ID formats).</li>
+<li><strong>Caching Benefits:</strong> A caching layer significantly improves performance for repeated inputs, but its implementation requires careful handling of cache misses and potential downstream bottlenecks.</li>
+<li><strong>Batching is Key:</strong> When dealing with downstream services (like TEI) that have input size limits, implementing client-side batching in the proxy/application layer is essential.</li>
+<li><strong>Iterative Development:</strong> Expect to hit roadblocks and refine the architecture based on errors and performance observations.</li>
+</ul>
+<p>The final result is a scalable, persistent, and significantly faster embedding service for workloads with potential query repetition.</p>
+<p>Check out the full implementation and try it yourself here <a href="https://github.com/joe32140/tei-qdrant-cache">https://github.com/joe32140/tei-qdrant-cache</a>!</p>
+<hr>
+
   </main>
 
           <footer role="contentinfo">

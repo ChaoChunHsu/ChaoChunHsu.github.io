@@ -34,6 +34,13 @@
       * { background-color: inherit }
       img:not([src*=".svg"]), .colors, iframe, .demo-container { filter: invert(100%) }
     </style>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WXNT3JCN');</script>
+      
     <title>
       
   Chao-Chun (Joe) Hsu
@@ -205,6 +212,15 @@
               <ul>
                 
                   <li class="pattern">
+                    <a href="#my-journey-building-a-scalable-cached-embedding-server-with-tei-and-qdrant" >
+                      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                        <use xlink:href="#bookmark"></use>
+                      </svg>
+                      <span class="text">My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant</span>
+                    </a>
+                  </li>
+                
+                  <li class="pattern">
                     <a href="#reproducibility-report-of-modernbert-models-for-retrieval-tasks-using-dpr" >
                       <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
                         <use xlink:href="#bookmark"></use>
@@ -274,6 +290,56 @@
         </div>
       
       
+        
+          <div class="pattern-section">
+            <h1 id="my-journey-building-a-scalable-cached-embedding-server-with-tei-and-qdrant" tabindex="-1">
+              <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+                <use xlink:href="#bookmark"></use>
+              </svg>
+              My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant
+            </h1>
+            <h2 id="my-journey-building-a-scalable-cached-embedding-server-with-tei-and-qdrant">My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant</h2>
+<blockquote>
+<p>Github repo: <a href="https://github.com/joe32140/tei-qdrant-cache">https://github.com/joe32140/tei-qdrant-cache</a></p></blockquote>
+<h3 id="before-we-start">Before We Start</h3>
+<p>Serving machine learning models efficiently, especially powerful embedding models, often requires more than just loading a checkpoint. As models grow and use cases demand high throughput or handle repetitive queries, challenges around scaling, latency, and resource utilization emerge. My goal was to create a robust system for serving text embeddings using Hugging Face&rsquo;s <code>text-embeddings-inference</code> (TEI) server, specifically targeting multi-GPU setups and incorporating a mechanism to handle repeated requests efficiently – essentially, building a smart caching layer.</p>
+<p>This post details the iterative process, the roadblocks encountered, and the final architecture using TEI, FastAPI, Qdrant, Nginx, and Docker Compose.</p>
+<h3 id="the-initial-plan-scaling-tei">The Initial Plan: Scaling TEI</h3>
+<p>The starting point was TEI, a high-performance server for embeddings. The immediate need was scaling across multiple GPUs (an 2-GPU machine in my case). TEI&rsquo;s issue discussion suggested a pattern: run independent TEI instances, each pinned to a specific GPU, and place a load balancer like Nginx in front <a href="https://github.com/huggingface/text-embeddings-inference/issues/87#issuecomment-1822970062">link</a>.</p>
+<p>To manage this, I opted for Docker Compose and wrote a Python script (<code>generate_configs.py</code>) to dynamically create the <code>docker-compose.yml</code> and <code>nginx.conf</code> based on a simple <code>.env</code> file specifying the number of GPU replicas (<code>NUM_REPLICAS</code>). This made scaling up or down much easier than manually duplicating service definitions.</p>
+<p><img src="https://chaochunhsu.github.io/images/tei_lb.png" alt="Global Megacorp Ltd"></p>
+<p><em>(Initial simplified view: Load Balancer distributing to TEI instances)</em></p>
+<h3 id="the-caching-idea-handling-redundancy">The Caching Idea: Handling Redundancy</h3>
+<p>With the basic multi-GPU serving working, the next goal was efficiency. Many applications send the same text for embedding multiple times. Re-computing these is wasteful. A caching layer was needed.</p>
+<p>I considered options like Nginx+Lua but opted for a dedicated <strong>FastAPI proxy service</strong> placed <em>in front</em> of the Nginx load balancer. This offered better separation of concerns and more flexibility in implementing the caching logic. For the cache store itself, instead of a simple key-value store like Redis, I decided to experiment with <strong>Qdrant</strong>, a vector database. While slightly overkill for simple key-value lookups, it offered persistence and the potential for future vector-based operations on the cache itself.</p>
+<p>The plan was:</p>
+<ul>
+<li>Client sends request to FastAPI proxy.</li>
+<li>Proxy hashes the input text to create a key.</li>
+<li>Proxy checks Qdrant for this key.</li>
+<li><strong>Hit:</strong> Return cached embedding.</li>
+<li><strong>Miss:</strong> Forward <em>only the missed text(s)</em> to Nginx -&gt; TEI, get the embedding, store it in Qdrant, then return to the client.</li>
+</ul>
+<h3 id="the-final-stack--a-gradio-demo">The Final Stack &amp; A Gradio Demo</h3>
+<p>After these iterations, the final architecture emerged:</p>
+<p><img src="https://chaochunhsu.github.io/images/tei_qdrant_lb.png" alt="Global Megacorp Ltd"></p>
+<p><em>(Simplified flow diagram)</em></p>
+<p>To make interaction easier, I added a simple <strong>Gradio application</strong> (<code>gradio_code_search/</code>) that uses this backend. It can clone a GitHub repo or scan a local directory, chunk code files, call the embedding endpoint (hitting the cache proxy), store the results in its <em>own</em> local Qdrant instance (separate from the main cache), and allow semantic search over the indexed code chunks. Building this demo also surfaced minor issues like correct Git clone URL handling and Gradio progress bar quirks.</p>
+<p><img src="https://chaochunhsu.github.io/images/ui.png" alt="Global Megacorp Ltd"></p>
+<h3 id="bottom-line--takeaways">Bottom Line &amp; Takeaways</h3>
+<p>Building this <code>tei-qdrant-cache</code> system was a valuable journey through the practicalities of deploying and optimizing embedding models. Key takeaways include:</p>
+<ul>
+<li><strong>Infrastructure First:</strong> Correct Docker, GPU driver, and NVIDIA Container Toolkit setup is paramount.</li>
+<li><strong>Know Your Tools:</strong> Understand the requirements and limitations of components like TEI (model compatibility, token limits) and libraries like <code>qdrant-client</code> (sync vs. async, ID formats).</li>
+<li><strong>Caching Benefits:</strong> A caching layer significantly improves performance for repeated inputs, but its implementation requires careful handling of cache misses and potential downstream bottlenecks.</li>
+<li><strong>Batching is Key:</strong> When dealing with downstream services (like TEI) that have input size limits, implementing client-side batching in the proxy/application layer is essential.</li>
+<li><strong>Iterative Development:</strong> Expect to hit roadblocks and refine the architecture based on errors and performance observations.</li>
+</ul>
+<p>The final result is a scalable, persistent, and significantly faster embedding service for workloads with potential query repetition.</p>
+<p>Check out the full implementation and try it yourself here <a href="https://github.com/joe32140/tei-qdrant-cache">https://github.com/joe32140/tei-qdrant-cache</a>!</p>
+<hr>
+
+          </div>
         
           <div class="pattern-section">
             <h1 id="reproducibility-report-of-modernbert-models-for-retrieval-tasks-using-dpr" tabindex="-1">
@@ -414,16 +480,10 @@
         </div>
       </div>
     </div>
-	
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-VD0B155VLN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-VD0B155VLN');
-</script>
-
+    
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXNT3JCN"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    
 	<script src="https://chaochunhsu.github.io/js/prism.js"></script>
     <script src="https://chaochunhsu.github.io/js/dom-scripts.js"></script>
     

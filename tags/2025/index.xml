@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Llm on Chao-Chun (Joe) Hsu</title>
-    <link>https://chaochunhsu.github.io/tags/llm/</link>
-    <description>Recent content in Llm on Chao-Chun (Joe) Hsu</description>
+    <title>2025 on Chao-Chun (Joe) Hsu</title>
+    <link>https://chaochunhsu.github.io/tags/2025/</link>
+    <description>Recent content in 2025 on Chao-Chun (Joe) Hsu</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <atom:link href="https://chaochunhsu.github.io/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://chaochunhsu.github.io/tags/2025/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant</title>
       <link>https://chaochunhsu.github.io/patterns/blogs/tei_qdrant_cache/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://chaochunhsu.github.io/patterns/blogs/tei_qdrant_cache/</guid>
       <description>&lt;h2 id=&#34;my-journey-building-a-scalable-cached-embedding-server-with-tei-and-qdrant&#34;&gt;My Journey Building a Scalable, Cached Embedding Server with TEI and Qdrant&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Github repo: &lt;a href=&#34;https://github.com/joe32140/tei-qdrant-cache&#34;&gt;https://github.com/joe32140/tei-qdrant-cache&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h3 id=&#34;before-we-start&#34;&gt;Before We Start&lt;/h3&gt;&#xA;&lt;p&gt;Serving machine learning models efficiently, especially powerful embedding models, often requires more than just loading a checkpoint. As models grow and use cases demand high throughput or handle repetitive queries, challenges around scaling, latency, and resource utilization emerge. My goal was to create a robust system for serving text embeddings using Hugging Face&amp;rsquo;s &lt;code&gt;text-embeddings-inference&lt;/code&gt; (TEI) server, specifically targeting multi-GPU setups and incorporating a mechanism to handle repeated requests efficiently – essentially, building a smart caching layer.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Reproducibility Report of ModernBERT Models for Retrieval Tasks Using DPR</title>
-      <link>https://chaochunhsu.github.io/patterns/blogs/modernbert_dpr/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://chaochunhsu.github.io/patterns/blogs/modernbert_dpr/</guid>
-      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Cross-posted here: &lt;a href=&#34;https://api.wandb.ai/links/joe32140/zqs87nz3&#34;&gt;https://api.wandb.ai/links/joe32140/zqs87nz3&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;h1 id=&#34;before-we-start&#34;&gt;Before We Start&lt;/h1&gt;&#xA;&lt;p&gt;As researchers from LightOn.AI and Answer.AI released the ModernBERT models (&lt;a href=&#34;https://huggingface.co/papers/2412.13663&#34;&gt;https://huggingface.co/papers/2412.13663&lt;/a&gt; ), which are BERT models for 2024, I am interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they have not released the model checkpoints for all experiments. I decided to finetune ModernBERT on the MSMACRO dataset by myself based on the provided training scripts.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

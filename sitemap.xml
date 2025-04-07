@@ -6,7 +6,15 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://chaochunhsu.github.io/tags/2025/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://chaochunhsu.github.io/patterns/blogs/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/caching/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -18,19 +26,47 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
+    <loc>https://chaochunhsu.github.io/tags/embeddings/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/fastapi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://chaochunhsu.github.io/</loc>
     <changefreq>weekly</changefreq>
     <priority>1</priority>
   </url><url>
+    <loc>https://chaochunhsu.github.io/tags/inference/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
     <loc>https://chaochunhsu.github.io/tags/llm/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/llm-infra/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/multi-gpu/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/patterns/blogs/tei_qdrant_cache/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/patterns/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/patterns/pattern/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/qdrant/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
