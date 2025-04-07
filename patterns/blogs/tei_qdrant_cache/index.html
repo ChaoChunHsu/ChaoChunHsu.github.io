@@ -310,8 +310,7 @@
 
 
     
-    <h2 id="my-attempt-at-building-a-multi-gpu-cache-embedding-server-with-tei-and-qdrant">My Attempt at Building a Multi-GPU Cache Embedding Server with TEI and Qdrant</h2>
-<blockquote>
+    <blockquote>
 <p>Github repo: <a href="https://github.com/joe32140/tei-qdrant-cache">https://github.com/joe32140/tei-qdrant-cache</a></p></blockquote>
 <h3 id="before-we-start">Before We Start</h3>
 <p>Serving an LLM-based embedding model with replicates over multiple GPUs on the same machine might sound trivial today (2025), but after my extensive search, there&rsquo;s actually no one-click setup. Originally, I thought vLLM could easily fulfill my needs, or that SGLang could be an alternative if vLLM didn&rsquo;t work. However, both libraries turned out to be either very limited to specific models or did not support request routing across multi-GPUs. Luckily, I encountered <a href="https://docs.vllm.ai/en/latest/deployment/nginx.html">link</a> and <a href="https://github.com/huggingface/text-embeddings-inference/issues/87#issuecomment-1822970062">link</a>, leading me to an Nginx load balancer setup. It also turned out that Hugging Face has its own <a href="https://github.com/huggingface/text-embeddings-inference/tree/main">text-embeddings-inference</a> library, which provides seamless support for serving embedding models with pre-built Docker images. In this post, my goal was to create a robust system for serving text embeddings using Hugging Face&rsquo;s text-embeddings-inference (TEI) server, specifically targeting multi-GPU setups and incorporating a mechanism to handle repeated requests efficiently – essentially, building a smart caching layer.</p>
