@@ -1,0 +1,12 @@
+Fonts in this directory are licensed under the SIL Open Font License, Version 1.1.
+
+  Miriam Libre — Copyright (c) Michal Sahar
+  https://github.com/MichalSahar/Miriam-Libre
+
+  Source Sans 3 — Copyright (c) Adobe (https://adobe.com/), with Reserved
+  Font Name 'Source'.
+  https://github.com/adobe-fonts/source-sans
+
+Full licence text: https://openfontlicense.org/open-font-license-official-text/
+
+woff2 builds retrieved from @fontsource 5.2.5 (https://fontsource.org).

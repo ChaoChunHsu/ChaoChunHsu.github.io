@@ -2,83 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://chaochunhsu.github.io/tags/2024/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/2025/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/patterns/blogs/</loc>
+    <loc>https://chaochunhsu.github.io/blog/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/caching/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/embeddings/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/fastapi/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/inference/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/llm/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/llm-infra/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/multi-gpu/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/blog/tei-qdrant-cache/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/qdrant/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/retrieval/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/</loc>
+    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/modernbert/</loc>
+    <lastmod>2024-12-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/reproducibility/</loc>
+    <lastmod>2024-12-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/blog/modernbert-dpr/</loc>
+    <lastmod>2024-12-24T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/categories/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://chaochunhsu.github.io/print-version/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/embeddings/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/fastapi/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/inference/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/llm/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/llm-infra/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/multi-gpu/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/patterns/blogs/tei_qdrant_cache/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/patterns/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/patterns/pattern/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/qdrant/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/patterns/blogs/modernbert_dpr/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/retrieval/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/</loc>
+    <loc>https://chaochunhsu.github.io/publications/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

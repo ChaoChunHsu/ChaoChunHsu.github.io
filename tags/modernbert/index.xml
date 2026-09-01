@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>modernbert on Chao-Chun (Joe) Hsu</title>
+    <link>https://chaochunhsu.github.io/tags/modernbert/</link>
+    <description>Recent content in modernbert on Chao-Chun (Joe) Hsu</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://chaochunhsu.github.io/tags/modernbert/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Reproducibility Report of ModernBERT Models for Retrieval Tasks Using DPR</title>
+      <link>https://chaochunhsu.github.io/blog/modernbert-dpr/</link>
+      <pubDate>Tue, 24 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://chaochunhsu.github.io/blog/modernbert-dpr/</guid>
+      <description>Cross-posted here: https://api.wandb.ai/links/joe32140/zqs87nz3
+ Before We Start As researchers from LightOn.AI and Answer.AI released the ModernBERT models, a BERT redesigned for 2024, I was interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they had not released the model checkpoints for all experiments. I decided to fine-tune ModernBERT on the MS MARCO dataset by myself based on the provided training scripts.</description>
+    </item>
+    
+  </channel>
+</rss>

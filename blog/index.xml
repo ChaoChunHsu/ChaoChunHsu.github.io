@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Chao-Chun (Joe) Hsu</title>
-    <link>https://chaochunhsu.github.io/</link>
-    <description>Recent content in Home on Chao-Chun (Joe) Hsu</description>
+    <title>Blog on Chao-Chun (Joe) Hsu</title>
+    <link>https://chaochunhsu.github.io/blog/</link>
+    <description>Recent content in Blog on Chao-Chun (Joe) Hsu</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://chaochunhsu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://chaochunhsu.github.io/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Attempt at Building a Multi-GPU Embedding Server with TEI and Qdrant</title>
       <link>https://chaochunhsu.github.io/blog/tei-qdrant-cache/</link>
@@ -25,15 +25,6 @@
       <guid>https://chaochunhsu.github.io/blog/modernbert-dpr/</guid>
       <description>Cross-posted here: https://api.wandb.ai/links/joe32140/zqs87nz3
  Before We Start As researchers from LightOn.AI and Answer.AI released the ModernBERT models, a BERT redesigned for 2024, I was interested to see its performance on retrieval tasks as mentioned in their paper, specifically with DPR. However, they had not released the model checkpoints for all experiments. I decided to fine-tune ModernBERT on the MS MARCO dataset by myself based on the provided training scripts.</description>
-    </item>
-    
-    <item>
-      <title>Publications</title>
-      <link>https://chaochunhsu.github.io/publications/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://chaochunhsu.github.io/publications/</guid>
-      <description>2026  CodeScout: Contextual Problem Statement Enhancement for Software Agents, Manan Suri, Xiangci Li, Mehdi Shojaie, Songyang Han, Chao-Chun Hsu, Shweta Garg, Aniket Anand Deshmukh, Varun Kumar, Findings of ACL 2026 CodeStruct: Code Agents over Structured Action Spaces, Myeongsoo Kim, Joe Hsu, Dingmin Wang, Shweta Garg, Varun Kumar, Murali Krishna Ramanathan, ACL 2026  2025  A machine learning model using clinical notes to identify physician fatigue, Chao-Chun Hsu, Ziad Obermeyer, Chenhao Tan, Nature Communications 16, 5791  2024  CHIME: LLM-Assisted Hierarchical Organization of Scientific Studies for Literature Review Support, Chao-Chun Hsu, Erin Bransom, Jenna Sparks, Bailey Kuehl, Chenhao Tan, David Wadden, Lucy Lu Wang, Aakanksha Naik, Findings of ACL 2024  2021  Decision-Focused Summarization, Chao-Chun Hsu, Chenhao Tan, EMNLP 2021 Answer Generation for Retrieval-based Question Answering Systems, Chao-Chun Hsu, Eric Lind, Luca Soldaini, Alessandro Moschitti, Findings of ACL 2021 (short)  2020  Characterizing the Value of Information in Medical Notes, Chao-Chun Hsu, Shantanu Karnwal, S.</description>
     </item>
     
   </channel>
