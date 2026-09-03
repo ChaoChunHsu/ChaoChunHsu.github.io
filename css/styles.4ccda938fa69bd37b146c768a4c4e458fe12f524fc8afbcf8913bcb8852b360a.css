@@ -301,7 +301,6 @@ pre[class*="language-"] {
 }
 code[class*="language-"], pre[class*="language-"] {
     text-shadow: none;
-    filter: grayscale(100%);
 }
 
 .cmd { padding: 0.75rem 1rem; background: var(--ink); }
@@ -420,6 +419,7 @@ caption { font-size: 0.95rem; padding-bottom: 0.35rem; font-style: italic; }
 }
 .icons a { border: 0; display: inline-block; line-height: 1; }
 .icons a:hover { background: none; color: var(--muted); }
+.icons .hf { display: inline-block; line-height: 1; font-weight: 800; font-size: 0.82em; letter-spacing: -0.02em; vertical-align: 0.12em; font-family: var(--font-body); }
 
 /* Nav */
 .patterns { flex: 1 1 auto; overflow-y: auto; margin-top: 1.75rem; }

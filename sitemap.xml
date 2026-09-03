@@ -3,16 +3,51 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://chaochunhsu.github.io/blog/</loc>
-    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://chaochunhsu.github.io/tags/caching/</loc>
-    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
+    <loc>https://chaochunhsu.github.io/tags/colbert/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/embeddings/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/performance/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/plaid/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/retrieval/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/blog/slow-half-of-plaid/</loc>
+    <lastmod>2026-09-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url><url>
+    <loc>https://chaochunhsu.github.io/tags/caching/</loc>
     <lastmod>2025-04-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -21,11 +56,6 @@
     <lastmod>2025-04-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/</loc>
-    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/inference/</loc>
     <lastmod>2025-04-06T00:00:00+00:00</lastmod>
@@ -53,16 +83,6 @@
     <priority>0.8</priority>
   </url><url>
     <loc>https://chaochunhsu.github.io/tags/qdrant/</loc>
-    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/retrieval/</loc>
-    <lastmod>2025-04-06T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://chaochunhsu.github.io/tags/</loc>
     <lastmod>2025-04-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
